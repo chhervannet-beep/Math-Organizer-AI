@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Kantumruy Pro", "Inter", sans-serif;
+  --font-serif: "Nokora", serif;
+  --font-mono: "Fira Mono", monospace;
+}
+
+/* Custom mathematical paper margins and typography weights */
+.math-paper {
+  font-family: "Nokora", "Kantumruy Pro", serif;
+}
+
+/* Base protection to keep KaTeX math equations properly styled and aligned */
+.katex {
+  font-family: KaTeX_Main, "Times New Roman", serif !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  line-height: 1 !important;
+  margin: 0 0.15em !important;
+}
+
+.katex .katex-html {
+  display: inline-flex !important;
+  align-items: center !important;
+  vertical-align: middle !important;
+}
+
+/* Ensure display mode equations are centered blocks with healthy margins */
+.katex-display {
+  display: block !important;
+  margin: 1.25rem auto !important;
+  width: 100% !important;
+  text-align: center !important;
+}
+
+.katex-display .katex {
+  display: inline-block !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+  vertical-align: middle !important;
+}
+
+/* Ensure math expressions within KaTeX do not get overrun by Khmer serif fonts */
+.katex .mathit,
+.katex .mathnormal,
+.katex .mathrm,
+.katex .mathsf,
+.katex .mathtt,
+.katex .mathbf,
+.katex .amsbsy,
+.katex .bold,
+.katex .italic {
+  font-family: KaTeX_Main, "Times New Roman", serif !important;
+}
+
+/* Strictly hide mathml nodes to solve overlapping double equations (like a2a2) */
+.katex-mathml {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+}
+
+/* Scrollable math elements on small viewports */
+.math-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+/* Smooth custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Print Stylesheet for flawless A4 mathematical PDFs */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-size: 13pt !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Hide raw interactive elements when printing */
+  .no-print {
+    display: none !important;
+  }
+
+  /* Force the paper container to expand to full width and occupy the entire printable surface */
+  .print-area {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: #ffffff !important;
+  }
+
+  /* Force page breaks cleanly between major exercises or sections */
+  .print-section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Custom styling for headers in print mode */
+  .print-header {
+    border-bottom: 2px double #334155 !important;
+    padding-bottom: 12px !important;
+    margin-bottom: 24px !important;
+  }
+
+  /* Remove any browser margins and configure thin custom margins */
+  @page {
+    size: A4;
+    margin: 1.5cm;
+  }
+}

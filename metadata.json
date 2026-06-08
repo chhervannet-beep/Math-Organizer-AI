@@ -1,0 +1,6 @@
+{
+  "name": "Math Organizer AI",
+  "description": "Smart application to organize and format mathematics lessons and exams, rendering beautiful formulas, and exporting to LaTeX, Word, and PDF.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
